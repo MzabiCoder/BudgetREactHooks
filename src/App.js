@@ -19,12 +19,11 @@ function App() {
   const [id, setId] = useState(0)
   
   useEffect(() => {
-    console.log();
+  
     localStorage.setItem('expenses',JSON.stringify(expenses))
   },[expenses])
   const editItem = id => {
     const expense = expenses.find(item => item.id === id)
-    console.log(expense.charge);
     let{charge,amount}=expense
     seCharge(charge)
     setAmount(amount)
@@ -63,13 +62,11 @@ function App() {
   }
   }
   const handleCharge = e => {
-    console.log(`charge:${e.target.value}`);
     
     seCharge(e.target.value)
   }
 
   const handleamount = e => {
-    console.log(`amount:${e.target.value}`);
 
     setAmount(parseInt(e.target.value))
   }
@@ -84,7 +81,6 @@ function App() {
   }
   
   const HandleClear = () => {
-    console.log('cleared all items');
     seEx([])
     HandleAlert({type:"danger",text:"Items have been deleted !!"})
     
