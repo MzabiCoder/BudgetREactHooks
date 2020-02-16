@@ -1,20 +1,20 @@
-import React,{useState} from 'react'
+import React from 'react'
 import {MdSend} from 'react-icons/md'
 
-const ExpenseForm = () => {
+const ExpenseForm = ({charge,amount,handleSubmit,handleCharge,handleamount}) => {
 
    
     return (
-        <form action="">
+        <form action="" onSubmit={handleSubmit}>
             <div className="form-center">
                 <div className="form-group">
                     <label htmlFor="charge">Charge</label>
-                    <input type="text" name="charge" id="charge" className="form-control"  placeholder="exp rent"/>
+                    <input type="text" onChange={handleCharge} value={charge} name="charge" id="charge" className="form-control"  placeholder="exp rent"/>
                 </div>
 
                 <div className="form-group">
                 <label htmlFor="charge">Amount</label>
-                <input type="text"   name="amount"  id="amount" className="form-control"  placeholder="exp amount"/>
+                    <input type="number" onChange={handleamount} value={amount} name="amount"  id="amount" className="form-control"  placeholder="exp amount"/>
             </div>
             </div>
             <button type="submit" className="btn">

@@ -1,7 +1,7 @@
 import React from 'react'
 import {MdEdit,MdDelete} from 'react-icons/md'
 
- const ExpenceItem = ({exp:{charge,amount}}) => {
+ const ExpenceItem = ({selItem,exp:{charge,amount,id}}) => {
      return (
          <li className="item">
         <div className="info">
@@ -13,7 +13,7 @@ import {MdEdit,MdDelete} from 'react-icons/md'
              <MdEdit/>
              </button>
 
-             <button className="clear-btn" aria-label="edit button">
+             <button className="clear-btn" onClick={()=>selItem(id)} aria-label="edit button">
              <MdDelete/>
              </button>
              </div>
