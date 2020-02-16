@@ -1,15 +1,13 @@
-import React,{useState,Fragment} from 'react';
+import React,{useState,Fragment,useEffect} from 'react';
 import './App.css';
 import uuid from 'uuid'
 import Form from './components/ExpenseForm'
 import List from './components/ExpenceList'
 import Alert from './components/ALert'
-const exp = [
-  { id: uuid(), charge: 'rent', amount: 1000 },
-  { id: uuid(), charge: 'bill', amount: 1200 },
-  {id:uuid(),charge:'gaz',amount:1600}
-]
 
+
+
+const exp=localStorage.getItem('expenses') ? JSON.parse(localStorage.getItem('expenses')):[]
 
 function App() {
 
@@ -18,8 +16,12 @@ function App() {
   const [charge, seCharge] = useState('')
   const [amount, setAmount] = useState('')
   const [edit, setEdit] = useState(true)
-  const [id,setId]=useState(0)
- 
+  const [id, setId] = useState(0)
+  
+  useEffect(() => {
+    console.log();
+    localStorage.setItem('expenses',JSON.stringify(expenses))
+  },[expenses])
   const editItem = id => {
     const expense = expenses.find(item => item.id === id)
     console.log(expense.charge);
